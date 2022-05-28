@@ -1,0 +1,135 @@
+@use "./variable.scss" as v;
+@use "./functions.scss" as f;
+
+/* --------------------- */
+/*    UTILITY CLASSES    */
+/* --------------------- */
+
+.flex {
+    display: flex;
+    gap: var(--gap, 1rem);
+    flex-direction: var(--flex-direction, row);
+}
+
+.grid {
+    display: grid;
+    gap: var(--gap, 1rem);
+}
+
+.container {
+    padding-inline: 2em;
+    margin-inline: auto;
+    max-width: 80rem;
+}
+
+.flow > *:where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1rem);
+    outline: 1px solid f.hsl-alpha(v.$clr-white, 0.1);
+}
+
+// screen reader only:
+// for visually hiding content for sighted users, but keeping that content in the page, so a screen reader can give that extra context (for exmple a button that doesn't have a text)
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
+}
+
+// colors:
+
+.bg-dark {
+    background-color: v.$clr-dark;
+}
+.bg-accent {
+    background-color: v.$clr-ligth;
+}
+.bg-white {
+    background-color: v.$clr-white;
+}
+
+.text-dark {
+    color: v.$clr-dark;
+}
+.text-accent {
+    color: v.$clr-ligth;
+}
+.text-white {
+    color: v.$clr-white;
+}
+
+// typography::after
+
+.ff-serif {
+    font-family: v.$ff-serif;
+}
+.ff-sans-cond {
+    font-family: v.$ff-sans-cond;
+}
+.ff-sans-normal {
+    font-family: v.$ff-sans-normal;
+}
+
+.letter-spacing-1 {
+    letter-spacing: 4.75px;
+}
+.letter-spacing-2 {
+    letter-spacing: 2.7px;
+}
+.letter-spacing-3 {
+    letter-spacing: 2.35px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.fs-900 {
+    font-size: v.$fs-900;
+}
+.fs-800 {
+    font-size: v.$fs-800;
+}
+.fs-700 {
+    font-size: v.$fs-700;
+}
+.fs-600 {
+    font-size: v.$fs-600;
+}
+.fs-500 {
+    font-size: v.$fs-500;
+}
+.fs-400 {
+    font-size: v.$fs-400;
+}
+.fs-300 {
+    font-size: v.$fs-300;
+}
+.fs-200 {
+    font-size: v.$fs-200;
+}
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+    line-height: 1.1;
+}
+
+.numbered-title {
+    font-family: v.$ff-sans-cond;
+    font-size: v.$fs-500;
+    text-transform: uppercase;
+    letter-spacing: 4.72px;
+
+    span {
+        margin-right: 0.5em;
+        font-weight: 700;
+        color: f.hsl-alpha(v.$clr-white, 0.25);
+    }
+}
