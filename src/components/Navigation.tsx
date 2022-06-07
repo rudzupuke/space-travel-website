@@ -1,7 +1,17 @@
 import { useState } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
-const Navigation = ({ setPage }) => {
+type NavigationProps = {
+    setPage: (value: string) => void;
+}
+
+type CustomLinkProps = {
+    to: string;
+    children: any;
+    onClick: () => void;
+}
+
+const Navigation: React.FC<NavigationProps> = ({ setPage }) => {
     const [navOpen, setNavOpen] = useState(false);
 
     const toggleNav = () => {
@@ -12,7 +22,7 @@ const Navigation = ({ setPage }) => {
         }
     };
 
-    const handleClick = (page) => {
+    const handleClick = (page: string) => {
         setPage(page);
         setNavOpen(false);
     };
@@ -75,7 +85,7 @@ const Navigation = ({ setPage }) => {
     );
 };
 
-const CustomLink = ({ to, children, ...props }) => {
+const CustomLink: React.FC<CustomLinkProps> = ({ to, children, ...props }) => {
     const resolvedPath = useResolvedPath(to);
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
